@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RideEasy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <span class="ride"><span class="r">R</span>ide</span><span class="easy"><span class="e">E</span>asy</span>
+        </div>
+        
+
+        <form class="login-form" onsubmit="return validateForm()" action="Verification.html">
+            <div class="input-group">
+                <label for="username">FULLNAME</label>
+                <input type="text" id="username" name="username" placeholder="Enter email or username" required>
+            </div>
+            <div class="input-group">
+                <label for="username">GMAIL</label>
+                <input type="text" id="username" name="username" placeholder="Enter email or username" required>
+            </div>
+
+
+
+            <div class="input-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button class="btn-signin" type="submit">Sign up</button>
+
+        </form>
+
+        
+    </div>
+    <script>
+        function validateForm() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === '' || password === '') {
+        alert('Please fill out both fields.');
+        return false;
+    }
+
+    // Strong password validation
+    const passwordErrors = [];
+    if (password.length < 8) {
+        passwordErrors.push('Password must be at least 8 characters long.');
+    }
+    if (!/[a-z]/.test(password)) {
+        passwordErrors.push('Password must contain at least one lowercase letter.');
+    }
+    if (!/[A-Z]/.test(password)) {
+        passwordErrors.push('Password must contain at least one uppercase letter.');
+    }
+    if (!/[0-9]/.test(password)) {
+        passwordErrors.push('Password must contain at least one number.');
+    }
+    if (!/[!@#$%^&*()_+=[\]{};':"\\|,.<>?]/.test(password)) {
+        passwordErrors.push('Password must contain at least one special character.');
+    }
+
+    if (passwordErrors.length > 0) {
+        alert('Password errors:\n' + passwordErrors.join('\n'));
+        return false;
+    }
+
+    return true; // Allow form submission if validation passes
+}
+
+    </script>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
